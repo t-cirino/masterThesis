@@ -63,7 +63,8 @@ def canonicTaut(smiles_str: str) -> str:
 """
 2.3 This function takes a .csv file with SMILES strings and their ID and 
  returns another file with canonical SMILES (but non canonical tautomer) 
- in the 1st col and canonical tautomer in the 3rd col. 
+ in the 1st col and canonical tautomer in the 3rd col. 4th collumn tells
+ if the input SMILES was already canonical.
 """
 def canonicTautcsv(input_file, output_file):
 
@@ -75,7 +76,7 @@ def canonicTautcsv(input_file, output_file):
 
         writer = csv.writer(outfile)
         writer.writerow(["SMILES","ID","SMILES_RDKit"])
-        counter_nonCanon = 0
+    
         for SMILES,RECORDID in data_lst:
 
             if isTautomer(SMILES):
